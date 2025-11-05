@@ -1,0 +1,485 @@
+@import 'variables', 'mixins';
+
+/* Navigation */
+.nav {
+  background-color: $bg-white;
+  padding: $spacing-md 0;
+  border-bottom: 1px solid $border-light;
+  box-shadow: $shadow-sm;
+  margin-bottom: $spacing-xl;
+
+  &-container {
+    @include flex-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+    
+
+    @include mobile {
+      flex-direction: column;
+      gap: $spacing-md;
+    }
+  }
+
+  &-links {
+    display: flex;
+    gap: $spacing-xl;
+    list-style: none;
+
+    @include mobile {
+      gap: $spacing-md;
+    }
+  }
+
+  &-link {
+    text-decoration: none;
+    color: $text-gray;
+    font-weight: 500;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $border-radius-md;
+    transition: all $transition-fast;
+
+    &.active {
+      color: $primary-color;
+      background-color: rgba($primary-color, 0.1);
+    }
+
+    &:hover {
+      color: $primary-color;
+      background-color: rgba($primary-color, 0.05);
+    }
+  }
+}
+
+/* Product Grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $spacing-lg;
+  padding: $spacing-md 0;
+
+  @include mobile {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: $spacing-md;
+  }
+}
+
+/* Product Card */
+.product-card {
+  @include card-base;
+  padding: $spacing-lg;
+  cursor: pointer;
+  position: relative;
+  @include flex-column;
+  height: 100%;
+  &-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: $border-radius-lg;
+    margin-bottom: $spacing-md;
+  }
+
+  &-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: $spacing-sm;
+    color: $text-dark;
+    line-height: 1.4;
+  }
+
+  &-description {
+    color: $text-gray;
+    line-height: 1.5;
+    margin-bottom: $spacing-md;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &-footer {
+    @include flex-between;
+    margin-top: auto;
+  }
+
+  &-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: $success-color;
+  }
+
+  &-actions {
+    display: flex;
+    gap: $spacing-sm;
+  }
+}
+
+/* Filter Buttons */
+.filter-buttons {
+  display: flex;
+  gap: $spacing-md;
+  margin-bottom: $spacing-xl;
+
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+.filter-btn {
+  padding: $spacing-md $spacing-lg;
+  border: 2px solid $border-light;
+  background: $bg-white;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all $transition-fast;
+
+  &.active {
+    background: $primary-color;
+    color: white;
+    border-color: $primary-color;
+  }
+
+  &:hover {
+    border-color: $primary-color;
+  }
+}
+
+/* Product Detail Page */
+.product-detail {
+  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-xxl;
+  align-items: start;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+}
+
+.product-gallery {
+  @include flex-column;
+  gap: $spacing-md;
+  position: relative;
+  
+  .image-counter {
+    position: absolute;
+    top: $spacing-sm;
+    right: $spacing-sm;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 6px 12px;
+    border-radius: $border-radius-md;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+.product-main-image {
+  width: 100%;
+  border-radius: $border-radius-xl;
+}
+
+.product-thumbnails {
+  display: flex;
+  gap: $spacing-sm;
+  overflow-x: auto;
+  padding: $spacing-sm 0;
+}
+
+.product-thumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: $border-radius-lg;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: $primary-color;
+    transform: scale(1.05);
+  }
+
+  &.active {
+    border-color: $primary-color;
+    box-shadow: 0 0 0 2px rgba($primary-color, 0.3);
+  }
+}
+
+.product-info {
+  h1 {
+    font-size: 32px;
+    margin-bottom: $spacing-md;
+    color: $text-dark;
+
+    @include mobile {
+      font-size: 24px;
+    }
+  }
+}
+
+.product-meta {
+  display: grid;
+  gap: $spacing-md;
+  margin: $spacing-lg 0;
+}
+
+.meta-item {
+  @include flex-between;
+  padding: $spacing-sm 0;
+  border-bottom: 1px solid $border-light;
+
+  strong {
+    color: $text-dark;
+  }
+
+  span {
+    color: $text-gray;
+  }
+}
+
+/* Loading States */
+.loading {
+  text-align: center;
+  padding: $spacing-xxl;
+  color: $text-gray;
+  font-size: 18px;
+}
+
+.error {
+  text-align: center;
+  padding: $spacing-xxl;
+  color: $danger-color;
+  background: rgba($danger-color, 0.1);
+  border-radius: $border-radius-lg;
+  margin: $spacing-lg 0;
+}
+
+/* Empty States */
+.empty-state {
+  text-align: center;
+  padding: $spacing-xxl $spacing-md;
+  color: $text-gray;
+
+  h3 {
+    margin-bottom: $spacing-sm;
+    color: $text-dark;
+  }
+}
+
+/* Create Product Page */
+.create-product-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: $spacing-lg;
+
+  h2 {
+    text-align: center;
+    margin-bottom: $spacing-xl;
+    color: $text-dark;
+  }
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: $spacing-xl;
+  
+  h2 {
+    color: $text-dark;
+    margin-bottom: $spacing-sm;
+  }
+}
+
+.form-subtitle {
+  color: $text-gray;
+  font-size: 16px;
+}
+
+.form-label-wrapper {
+  @include flex-between;
+  margin-bottom: $spacing-sm;
+}
+
+.char-counter {
+  font-size: 12px;
+  color: $text-light;
+  font-weight: 500;
+}
+
+// Стили для успешной валидации
+.form-control.success {
+  border-color: $success-color;
+  background-color: rgba($success-color, 0.05);
+}
+
+.form-success {
+  color: $success-color;
+  font-size: 14px;
+  margin-top: 6px;
+  display: block;
+  font-weight: 500;
+}
+
+// Улучшенные стили для ошибок
+.form-control.error {
+  border-color: $danger-color;
+  background-color: rgba($danger-color, 0.05);
+}
+
+.form-error {
+  color: $danger-color;
+  font-size: 14px;
+  margin-top: 6px;
+  display: block;
+  font-weight: 500;
+}
+
+// Стили для поля цены
+.price-input-wrapper {
+  position: relative;
+  
+  .currency-symbol {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $text-gray;
+    font-weight: 600;
+    z-index: 2;
+  }
+  
+  .form-control {
+    padding-left: 30px;
+  }
+}
+
+// Статистика формы
+.form-stats {
+  background: $bg-hover;
+  padding: $spacing-md;
+  border-radius: $border-radius-md;
+  border: 1px solid $border-light;
+  
+  .stat-item {
+    @include flex-between;
+    margin-bottom: $spacing-xs;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  .stat-label {
+    color: $text-gray;
+    font-size: 14px;
+  }
+  
+  .stat-value {
+    font-weight: 600;
+    font-size: 14px;
+    
+    &.valid {
+      color: $success-color;
+    }
+    
+    &.invalid {
+      color: $danger-color;
+    }
+  }
+}
+
+// Кнопки формы
+.form-actions {
+  @include flex-between;
+  gap: $spacing-md;
+  margin-top: $spacing-xl;
+
+  @include mobile {
+    flex-direction: column;
+  }
+
+  button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+
+    &:hover {
+      transform: none !important;
+    }
+  }
+}
+
+.action-buttons {
+  display: flex;
+  gap: $spacing-sm;
+  
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+// Спиннер загрузки
+.loading-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// Preview изображения
+.image-preview {
+  margin-top: $spacing-sm;
+  padding: $spacing-md;
+  background: white;
+  border-radius: $border-radius-md;
+  border: 2px dashed $border-light;
+  text-align: center;
+  
+  &-label {
+    font-size: 14px;
+    color: $text-gray;
+    margin-bottom: $spacing-sm;
+    display: block;
+    font-weight: 500;
+  }
+  
+  img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: $border-radius-md;
+    box-shadow: $shadow-sm;
+  }
+}
+
+// Улучшения для select
+select.form-control {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right(12px) center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 40px;
+}
+ .btn-outline{
+    margin-right: 20px;
+}
+.btn-primary{
+    margin-right: 20px;
+}
+.product-actions{
+    padding-top: 20px;
+}

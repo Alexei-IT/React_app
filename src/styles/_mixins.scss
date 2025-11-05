@@ -1,0 +1,98 @@
+// Flexbox mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Button mixin
+@mixin button-base {
+  padding: 10px 20px;
+  border: none;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all $transition-fast;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: $shadow-md;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin button-variant($background, $hover-background) {
+  background-color: $background;
+  color: white;
+
+  &:hover {
+    background-color: $hover-background;
+  }
+}
+
+// Card mixin
+@mixin card-base {
+  background: $bg-white;
+  border-radius: $border-radius-xl;
+  box-shadow: $shadow-sm;
+  transition: all $transition-normal;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+// Form mixins
+@mixin form-control {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid $border-light;
+  border-radius: $border-radius-md;
+  font-size: 16px;
+  transition: border-color $transition-fast;
+
+  &:focus {
+    outline: none;
+    border-color: $border-focus;
+    box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+  }
+
+  &.error {
+    border-color: $danger-color;
+  }
+}
+
+// Responsive mixins
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$breakpoint-tablet}) {
+    @content;
+  }
+}
