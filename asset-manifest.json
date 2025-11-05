@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/taska/static/css/main.81bc3a84.css",
-    "main.js": "/taska/static/js/main.92c22b5a.js",
-    "static/js/453.922ff411.chunk.js": "/taska/static/js/453.922ff411.chunk.js",
-    "index.html": "/taska/index.html",
-    "main.81bc3a84.css.map": "/taska/static/css/main.81bc3a84.css.map",
-    "main.92c22b5a.js.map": "/taska/static/js/main.92c22b5a.js.map",
-    "453.922ff411.chunk.js.map": "/taska/static/js/453.922ff411.chunk.js.map"
+    "main.css": "/React_app/static/css/main.81bc3a84.css",
+    "main.js": "/React_app/static/js/main.00dc6fb8.js",
+    "static/js/453.922ff411.chunk.js": "/React_app/static/js/453.922ff411.chunk.js",
+    "index.html": "/React_app/index.html",
+    "main.81bc3a84.css.map": "/React_app/static/css/main.81bc3a84.css.map",
+    "main.00dc6fb8.js.map": "/React_app/static/js/main.00dc6fb8.js.map",
+    "453.922ff411.chunk.js.map": "/React_app/static/js/453.922ff411.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.81bc3a84.css",
-    "static/js/main.92c22b5a.js"
+    "static/js/main.00dc6fb8.js"
   ]
 }
